@@ -27,7 +27,6 @@
                     <li class="album" ng-bind-html="getPlayingSong().album"></li>
                 </ul>
                 <div id="songdetails_controls">
-                    <a href="" class="jukebox" title="Jukebox Mode [Beta]" ng-click="toggleSetting('Jukebox')" ng-class="{'hoverSelected': !settings.Jukebox }"></a>
                     <jamstash-repeat selected-value="playerSettings.repeat" values="playerSettings.repeatValues"></jamstash-repeat>
                     <a href="" id="action_SaveProgress" class="lock" title="Save Track Position: On" ng-show="settings.SaveTrackPosition"></a>
                     <a title="Favorite" href="" ng-class="{'favorite': getPlayingSong().starred, 'rate': !getPlayingSong().starred}" ng-click="toggleStar(getPlayingSong())" stop-event="click"></a>
