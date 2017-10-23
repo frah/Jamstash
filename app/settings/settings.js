@@ -93,25 +93,16 @@ angular.module('jamstash.settings.controller', ['jamstash.settings.service', 'ja
             $scope.changeLog = data;
         });
     };
-    $scope.setupDemo = function () {
-        var Username = "android-guest";
-        var Password = "guest";
-        var Server = "http://demo.subsonic.org";
-        var Tab = "tabLibrary";
-        if (utils.confirmDelete("Do you want to connect to the Subsonic Demo server?")) {
-            globals.settings.Username = Username;
-            globals.settings.Password = Password;
-            globals.settings.Server = Server;
+    $scope.setupGuest = function () {
+        if (utils.confirmDelete("Do you want to join as a guest?")) {
+            globals.settings.Username = "guest";
+            globals.settings.Password = "guest";
             $location.path('/library').replace();
             $rootScope.showIndex = true;
         }
     };
 
     /* Load on Startup */
-    if (typeof $location.search()['url'] != 'undefined' && $scope.settings.Server === '') {
-        if (globals.settings.Debug) { console.log("Setting Provided: " + $location.search()['url']); }
-        $scope.settings.Server = $location.search()['url'];
-    }
     if (typeof $location.search()['u'] != 'undefined' && $scope.settings.Username === '') {
         if (globals.settings.Debug) { console.log("Setting Provided: " + $location.search()['u']); }
         $scope.settings.Username = $location.search()['u'];

@@ -36,7 +36,7 @@ angular.module('jamstash.settings.service', [])
         Password: "",
         Server: "",
         Timeout: 20000,
-        Protocol: "jsonp",
+        Protocol: "json",
         ApplicationName: "Jamstash",
         ApiVersion: "1.6.0",
         AutoPlaylists: "",
@@ -44,7 +44,7 @@ angular.module('jamstash.settings.service', [])
         AutoAlbumSize: 15,
         // General
         HideAZ: false,
-        ScrollTitle: true,
+        ScrollTitle: false,
         NotificationSong: true,
         NotificationNowPlaying: false,
         SaveTrackPosition: false,

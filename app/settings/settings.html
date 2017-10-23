@@ -4,12 +4,10 @@
         <form class="form" id="SettingsForm">
             <div class="subsection floatleft">
                 <h3 class="title">Login</h3>
-                <label for="Username">Username <span class="red">*</span></label><br />
+                <label for="Username">Username <span class="red">*</span> (<a href="" title="Connect as a guest" ng-click="setupGuest()">Guest</a>)</label><br />
                 <input type="text" id="Username" name="Username" class="large" ng-model="settings.Username" /><br />
                 <label for="Password">Password <span class="red">*</span></label><br />
                 <input type="password" id="Password" name="Password" class="large" ng-model="settings.Password" /><br />
-                <label for="Server">Server <span class="red">*</span> (<a href="" title="Connect to Demo Subsonic Server" ng-click="setupDemo()">Demo</a>)</label><br />
-                <input type="text" id="Server" name="Server" class="xlarge" title="Subsonic Server URL Ex: http://host:port" ng-model="settings.Server" /><br />
                 <!--<a href="#" class="button" id="action_RequestURL" title="Request Permission for Server URL">Enable URL</a><br />-->
                 <br />
                 <h3 class="title">Options</h3>

@@ -52,6 +52,10 @@ angular.module('JamStash')
                 globals.settings[key] = val;
             });
         }
+
+        // Hardcode using the subsonic API served via the "/subsonic" path on the same server/port
+        globals.settings['Server'] = window.location.origin + "/subsonic";
+
         if (utils.getValue("SavedCollections")) { globals.SavedCollections = utils.getValue("SavedCollections").split(","); }
         if (utils.getValue("DefaultCollection")) { globals.DefaultCollection = utils.getValue("DefaultCollection"); }
         if (globals.settings.Debug) { console.log('Loaded Settings: ' + JSON.stringify(globals.settings, null, 2)); }
