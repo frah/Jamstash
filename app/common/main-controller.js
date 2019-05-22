@@ -53,8 +53,8 @@ angular.module('JamStash')
             });
         }
 
-        // Hardcode using the subsonic API served via the "/subsonic" path on the same server/port
-        globals.settings['Server'] = window.location.origin + "/subsonic";
+        // Hardcode using the subsonic API served via the same server/port
+        globals.settings['Server'] = window.location.origin;
 
         if (utils.getValue("SavedCollections")) { globals.SavedCollections = utils.getValue("SavedCollections").split(","); }
         if (utils.getValue("DefaultCollection")) { globals.DefaultCollection = utils.getValue("DefaultCollection"); }
