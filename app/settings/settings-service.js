@@ -69,8 +69,34 @@ angular.module('jamstash.settings.service', [])
     this.ChangeLog = null;
     this.Messages = [];
 
+    this.HexDecode = function (n) {
+        return n.replace(/.{2}/g, function(c) {
+            return String.fromCharCode(parseInt(c, 16));
+        });
+    };
+    this.GetSalt = function () { return Math.random().toString(32).substring(2); };
+    this.GetHash = function (s) { return md5(this.HexDecode(this.settings.Password.substring(4)) + s); };
     this.BaseURL = function () { return this.settings.Server + '/rest'; };
-    this.BaseParams = function () { return 'u=' + this.settings.Username + '&p=' + this.settings.Password + '&f=' + this.settings.Protocol + '&v=' + this.settings.ApiVersion + '&c=' + this.settings.ApplicationName; };
+    this.BaseParams = function () {
+        var p = this.BaseParamsObject();
+        return Object.keys(p).map(function (k) { return k+'='+p[k] }).join('&');
+    };
+    this.BaseParamsObject = function () {
+        var r = {
+            u: this.settings.Username,
+            f: this.settings.Protocol,
+            v: this.settings.ApiVersion,
+            c: this.settings.ApplicationName
+        };
+        if (this.settings.ApiVersion.replace(/\./g, '') > 1120) {
+            var s = this.GetSalt();
+            r.t = this.GetHash(s);
+            r.s = s;
+        } else {
+            r.p = this.settings.Password;
+        }
+        return r;
+    }
     this.BaseJSONParams = function () { return 'u=' + this.settings.Username + '&p=' + this.settings.Password + '&f=json&v=' + this.settings.ApiVersion + '&c=' + this.settings.ApplicationName; };
 })
 

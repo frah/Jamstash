@@ -92,13 +92,7 @@ function subsonicService(
         // Otherwise we create a config object
         var actualConfig = config || {};
         actualConfig.params = actualConfig.params || {};
-        _.extend(actualConfig.params,  {
-            u: globals.settings.Username,
-            p: globals.settings.Password,
-            f: globals.settings.Protocol,
-            v: globals.settings.ApiVersion,
-            c: globals.settings.ApplicationName
-        });
+        _.extend(actualConfig.params,  globals.BaseParamsObject());
         actualConfig.timeout = globals.settings.Timeout;
 
         var httpPromise;

@@ -41,7 +41,8 @@
     "angular-locker": "~2.0.1",
     "open-iconic": "~1.1.1",
     "ng-lodash": "~0.2.3",
-    "angular-ui-sortable": "~0.13.4"
+    "angular-ui-sortable": "~0.13.4",
+    "js-md5": "md5#^0.7.3"
   },
   "overrides": {
     "fancybox": {
