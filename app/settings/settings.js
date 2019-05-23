@@ -66,12 +66,16 @@ angular.module('jamstash.settings.controller', ['jamstash.settings.service', 'ja
         $scope.loadSettings();
         if (globals.settings.Server !== '' && globals.settings.Username !== '' && globals.settings.Password !== '') {
             subsonic.ping().then(function (subsonicResponse) {
-                globals.settings.ApiVersion = subsonicResponse.version;
+                $scope.settings.ApiVersion = subsonicResponse.version;
+                persistence.saveSettings($scope.settings);
+                $scope.loadSettings();
                 $location.path('/library').replace();
                 $rootScope.showIndex = true;
             }, function (error) {
                 //TODO: Hyz: Duplicate from subsonic.js - requestSongs. Find a way to handle this only once.
-                globals.settings.ApiVersion = error.version;
+                $scope.settings.ApiVersion = error.version;
+                persistence.saveSettings($scope.settings);
+                $scope.loadSettings();
                 var errorNotif;
                 if (error.subsonicError !== undefined) {
                     errorNotif = error.reason + ' ' + error.subsonicError.message;
